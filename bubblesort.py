@@ -1,6 +1,5 @@
-import numpy as np
-
 def bubblesort(arr):
+
     n = len(arr)
     for i in range(n-1):
         for j in range(0, n-1-i):

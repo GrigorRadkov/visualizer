@@ -1,8 +1,10 @@
 import PySimpleGUI as sg
 import pygame
+import numpy as np
 from draw import *
 from pygame import *
 from bubblesort import *
+from quicksort import *
 
 BAR_SPACING, BAR_WIDTH, OFFSET = 12, 10, 5
 GRAPH_SIZE = 450
@@ -76,7 +78,7 @@ def main():
                 if event == 'Sort':
 
                     sorted_array = bubblesort(arr)
-                    print(sorted_array)
+
                     for partially_sorted_array in sorted_array:
                         event, values = graph_window.read(timeout=timeout)
                         if event is None:
@@ -129,7 +131,7 @@ def main():
                 if event == 'Sort':
 
                     sorted_array = selectionsort(arr)
-                    print(sorted_array)
+
                     for partially_sorted_array in sorted_array:
                         event, values = graph_window.read(timeout=timeout)
                         if event is None:
@@ -177,8 +179,8 @@ def main():
 
                 if event == 'Sort':
 
-                    sorted_array = quicksort(arr)
-                    print(sorted_array)
+                    sorted_array = quicksort(arr, 0, (len(arr) - 1))
+
                     for partially_sorted_array in sorted_array:
                         event, values = graph_window.read(timeout=timeout)
                         if event is None:
