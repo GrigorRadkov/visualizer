@@ -44,7 +44,7 @@ def main():
         select_window.Maximize()
 
         if event == "Exit" or event == sg.WIN_CLOSED:
-            break
+            return 1
 
         if event == "BubbleSort":
 
@@ -52,14 +52,18 @@ def main():
             event, values = alg_window.read()
             alg_window.Maximize()
 
-            arr_size = int(values[0])
-            num_cap = int(values[1])
-
             if event == "Close" or event == sg.WIN_CLOSED:
-                break
+                return 1
 
             if event == "Ok":
-                
+
+                try:
+                    arr_size = int(values[0])
+                    num_cap = int(values[1])
+                except:
+                    sg.popup('No array parameters entered')
+                    return 1
+                    
                 alg_window.close()
 
                 arr = np.random.randint(1, num_cap, arr_size)
@@ -93,7 +97,7 @@ def main():
                 while True:
                     event, values = graph_window.Read()
                     if event in (sg.WIN_CLOSED):
-                        break
+                        return 1
                 
 
                 
@@ -105,14 +109,20 @@ def main():
             event, values = alg_window.read()
             alg_window.Maximize()
 
-            arr_size = int(values[0])
-            num_cap = int(values[1])
+            
 
             if event == "Close" or event == sg.WIN_CLOSED:
-                break
+                return 1
 
             if event == "Ok":
-                
+
+                try:
+                    arr_size = int(values[0])
+                    num_cap = int(values[1])
+                except:
+                    sg.popup('No array parameters entered')
+                    return 1
+
                 alg_window.close()
 
                 arr = np.random.randint(1, num_cap, arr_size)
@@ -135,7 +145,7 @@ def main():
                     for partially_sorted_array in sorted_array:
                         event, values = graph_window.read(timeout=timeout)
                         if event is None:
-                            break
+                            return 1
                         graph.Erase()
                         draw_bars(graph, partially_sorted_array, BAR_SPACING, BAR_WIDTH, OFFSET)
                         timeout = int(values['-SPEED-'])
@@ -146,7 +156,7 @@ def main():
                 while True:
                     event, values = graph_window.Read()
                     if event in (sg.WIN_CLOSED):
-                        break
+                        return 1
 
         if event == "QuickSort":
 
@@ -154,14 +164,18 @@ def main():
             event, values = alg_window.read()
             alg_window.Maximize()
 
-            arr_size = int(values[0])
-            num_cap = int(values[1])
-
             if event == "Close" or event == sg.WIN_CLOSED:
-                break
+                return 1
+
 
             if event == "Ok":
-                
+                try:
+                    arr_size = int(values[0])
+                    num_cap = int(values[1])
+                except:
+                    sg.popup('No array parameters entered')
+                    return 1
+                    
                 alg_window.close()
 
                 arr = np.random.randint(1, num_cap, arr_size)
@@ -184,7 +198,8 @@ def main():
                     for partially_sorted_array in sorted_array:
                         event, values = graph_window.read(timeout=timeout)
                         if event is None:
-                            break
+                            return 1
+
                         graph.Erase()
                         draw_bars(graph, partially_sorted_array, BAR_SPACING, BAR_WIDTH, OFFSET)
                         timeout = int(values['-SPEED-'])
@@ -195,7 +210,7 @@ def main():
                 while True:
                     event, values = graph_window.Read()
                     if event in (sg.WIN_CLOSED):
-                        break
+                        return 1
 
 
 main()
