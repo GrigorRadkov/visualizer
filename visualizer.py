@@ -5,6 +5,7 @@ from draw import *
 from pygame import *
 from bubblesort import *
 from quicksort import *
+from selectionsort import *
 
 BAR_SPACING, BAR_WIDTH, OFFSET = 12, 10, 5
 GRAPH_SIZE = 450
@@ -63,7 +64,7 @@ def main():
                 except:
                     sg.popup('No array parameters entered')
                     return 1
-                    
+
                 alg_window.close()
 
                 arr = np.random.randint(1, num_cap, arr_size)
